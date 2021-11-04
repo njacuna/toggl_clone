@@ -2,6 +2,7 @@ import React from "react";
 import AddTasks from "./addTask";
 import Logout from "./logout";
 import Tasks from "./tasks";
+import Type from "./type";
 
 const HomePage = ({ email, uid }) => {
   const userEmail = String(email);
@@ -13,6 +14,7 @@ const HomePage = ({ email, uid }) => {
       </nav>
       <div className="container">
         <AddTasks uid={uid} />
+        <Type uid={uid} />
         <Tasks uid={uid} />
       </div>
     </div>
