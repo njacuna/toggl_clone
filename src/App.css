@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #cfc9d4;
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+nav {
+  background-color: #6d6375;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  color: #eeeeee;
+  letter-spacing: 1px;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button {
+  outline: none;
+  border: none;
+  height: 30px;
+  width: 30px;
+  padding: 2px 4px;
+  color: #87838b;
+  cursor: pointer;
+  margin: 0 3px;
+}
+
+.container {
+  color: rgb(86, 86, 86);
   display: flex;
   flex-direction: column;
+}
+
+ul {
+  background-color: #ffffff;
+  list-style-type: none;
+  margin: 1.5rem 1rem;
+}
+
+li {
+  height: 4rem;
+  border: 0.5px solid #e3e3e3;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  padding: 0 1rem;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+  color: #3e3c40;
 }
 
-.App-link {
-  color: #61dafb;
+.li-button {
+  border-radius: 30%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+input {
+  outline: none;
+  border: none;
+  height: 3.5rem;
+  width: 60%;
+}
+
+.new-task {
+  height: 40px;
+  width: 70px;
+}
+
+.logout {
+  background-color: #52495a;
+  height: inherit;
+  width: inherit;
+  padding: 8px 15px;
+  color: #dddddd;
 }
