@@ -11,7 +11,7 @@ const AddTasks = ({ uid }) => {
     await addDoc(taskCollectionRef, {
       description: newTask,
       duration: 0,
-      isActive: true,
+      isActive: false,
       createdAt: new Date().toLocaleString(),
     });
     setNewTask("");
