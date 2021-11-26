@@ -66,7 +66,6 @@ const AddTasks = ({ uid }) => {
   // } else {
   //   newtime = time + "morning";
   // }
-  // console.log(newtime);
 
   useEffect(() => {
     const getDuration = (time) => {
