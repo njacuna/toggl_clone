@@ -33,6 +33,10 @@ button {
   margin: 0 3px;
 }
 
+.toggle {
+  display: none;
+}
+
 .container {
   color: rgb(86, 86, 86);
   display: flex;
@@ -45,8 +49,20 @@ ul {
   margin: 1.5rem 1rem;
 }
 
+.task-list {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+}
+
+.day-list {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 100%;
+}
+
 li {
-  height: 4rem;
   border: 0.5px solid #e3e3e3;
   display: flex;
   align-items: center;
@@ -55,30 +71,15 @@ li {
   letter-spacing: 0.5px;
   font-size: 14px;
   color: #3e3c40;
+  width: 100%;
 }
 
 .li-button {
   border-radius: 30%;
 }
 
-form {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-input {
-  outline: none;
-  border: none;
-  height: 3.5rem;
-  width: 60%;
-}
-
-.new-task {
-  height: 40px;
-  width: 70px;
+select {
+  width: 3.8rem;
 }
 
 .logout {
@@ -87,4 +88,32 @@ input {
   width: inherit;
   padding: 8px 15px;
   color: #dddddd;
+}
+
+.create-task {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.col-2 {
+  width: 35rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.time {
+  width: 3.5rem;
+  background-color: #e9e9e9;
+}
+
+input {
+  outline: none;
+  border: none;
+  font-size: 13px;
+}
+
+label {
+  font-size: 13px;
 }

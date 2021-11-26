@@ -1,58 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth } from "./firebase";
-import Login from "./components/login";
-import HomePage from "./components/homePage";
+import LoginBtn from "./components/LoginBtn";
+import HomePage from "./components/HomePage";
 
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "./firebase";
 
 function App() {
   const [signedIn, setSignedIn] = useState(false);
   const [userData, setUserData] = useState([]);
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      setUserData(user);
-      return setSignedIn(true);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserData(user);
+        return setSignedIn(true);
+      }
+      setSignedIn(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    const doesExist = async () => {
+      const docRef = doc(db, "users", `${userData.uid}`);
+      const docSnap = await getDoc(docRef);
+
+      if (!docSnap.exists()) {
+        await setDoc(doc(db, "users", `${userData.uid}`), {
+          email: userData.email,
+          type: "user",
+        });
+      }
+    };
+    if (signedIn === true) {
+      doesExist();
     }
-    setSignedIn(false);
   });
 
-  const uid = userData.uid;
-
-  const addUserDoc = async () => {
-    await setDoc(doc(db, "users", uid), {
-      email: userData.email,
-      type: "basic",
-    });
-  };
-
-  if (signedIn === true) {
-    addUserDoc();
-    return (
-      <Router>
-        <Switch>
+  return (
+    <Router>
+      <Switch>
+        {signedIn === true ? (
           <Route
             path="/"
             render={() => (
               <HomePage email={userData.email} uid={userData.uid} />
             )}
           />
-        </Switch>
-      </Router>
-    );
-  } else {
-    return (
-      <Router>
-        <Switch>
-          <Route path="/" component={Login} />
-        </Switch>
-      </Router>
-    );
-  }
+        ) : (
+          <Route path="/" component={LoginBtn} />
+        )}
+      </Switch>
+    </Router>
+  );
 }
 
 export default App;

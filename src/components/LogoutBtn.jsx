@@ -2,7 +2,7 @@ import React from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
-const Logout = () => {
+const LogoutBtn = () => {
   const googleSignout = () => {
     signOut(auth);
   };
@@ -15,4 +15,4 @@ const Logout = () => {
   );
 };
 
-export default Logout;
+export default LogoutBtn;

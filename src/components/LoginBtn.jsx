@@ -2,7 +2,7 @@ import React from "react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../firebase";
 
-const Login = () => {
+const LoginBtn = () => {
   const googleSignin = () => {
     const provider = new GoogleAuthProvider(auth);
     signInWithPopup(auth, provider);
@@ -16,4 +16,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginBtn;

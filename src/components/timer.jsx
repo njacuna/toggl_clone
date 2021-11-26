@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { doc, updateDoc } from "@firebase/firestore";
 import { db } from "../firebase";
 
@@ -6,8 +6,6 @@ const Timer = ({ duration, status, uid, docid }) => {
   const [seconds, setSeconds] = useState(duration);
   const [isActive, setIsActive] = useState(status);
   const countRef = useRef(null);
-
-  const taskDocRef = doc(db, `users/${uid}/tasks`, `${docid}`);
 
   const toggl = () => {
     if (isActive) {
@@ -21,14 +19,16 @@ const Timer = ({ duration, status, uid, docid }) => {
     }
   };
 
-  const updateDuration = async (seconds) => {
-    await updateDoc(taskDocRef, {
-      duration: seconds,
-      isActive,
-    });
-  };
-
-  updateDuration(seconds);
+  useEffect(() => {
+    const taskDocRef = doc(db, `users/${uid}/tasks`, `${docid}`);
+    const updateDuration = async (seconds) => {
+      await updateDoc(taskDocRef, {
+        duration: seconds,
+        isActive,
+      });
+    };
+    updateDuration(seconds);
+  }, [uid, docid, isActive, seconds]);
 
   const symbol = isActive ? "◼" : "▶";
 
@@ -48,7 +48,7 @@ const formatTime = (timer) => {
   const getMinutes = `0${minutes % 60}`.slice(-2);
   const getHours = `0${Math.floor(timer / 3600)}`.slice(-2);
 
-  return `${getHours}:${getMinutes}:${getSeconds}`;
+  return `${getHours} : ${getMinutes} : ${getSeconds}`;
 };
 
 export default Timer;

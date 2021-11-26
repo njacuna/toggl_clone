@@ -1,8 +1,11 @@
 import React from "react";
-import AddTasks from "./addTask";
-import Logout from "./logout";
-import Tasks from "./tasks";
-import Type from "./type";
+import AddTasks from "./AddTask";
+import LogoutBtn from "./LogoutBtn";
+import Tasks from "./Tasks";
+import UserList from "./UserList";
+import CreateProject from "./CreateProject";
+import CreateClient from "./CreateClient";
+import Manual from "./Manual";
 
 const HomePage = ({ email, uid }) => {
   const userEmail = String(email);
@@ -10,12 +13,15 @@ const HomePage = ({ email, uid }) => {
     <div>
       <nav>
         <h5>{userEmail}</h5>
-        <Logout />
+        <LogoutBtn />
       </nav>
       <div className="container">
         <AddTasks uid={uid} />
-        <Type uid={uid} />
+        <CreateProject />
+        <CreateClient />
         <Tasks uid={uid} />
+        <UserList uid={uid} />
+        <Manual />
       </div>
     </div>
   );
