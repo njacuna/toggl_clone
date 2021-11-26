@@ -5,7 +5,6 @@ import Tasks from "./Tasks";
 import UserList from "./UserList";
 import CreateProject from "./CreateProject";
 import CreateClient from "./CreateClient";
-import Manual from "./Manual";
 
 const HomePage = ({ email, uid }) => {
   const userEmail = String(email);
@@ -21,7 +20,6 @@ const HomePage = ({ email, uid }) => {
         <CreateClient />
         <Tasks uid={uid} />
         <UserList uid={uid} />
-        <Manual />
       </div>
     </div>
   );
