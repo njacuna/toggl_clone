@@ -1,7 +1,7 @@
 import React from "react";
 import AddTasks from "./AddTask";
 import LogoutBtn from "./LogoutBtn";
-import Tasks from "./Tasks";
+import TaskList from "./TaskList";
 import UserList from "./UserList";
 import CreateProject from "./CreateProject";
 import CreateClient from "./CreateClient";
@@ -18,7 +18,7 @@ const HomePage = ({ email, uid }) => {
         <AddTasks uid={uid} />
         <CreateProject />
         <CreateClient />
-        <Tasks uid={uid} />
+        <TaskList uid={uid} />
         <UserList uid={uid} />
       </div>
     </div>

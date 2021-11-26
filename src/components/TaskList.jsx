@@ -8,7 +8,7 @@ import DuplicateBtn from "./DuplicateBtn";
 import TotalHrsDay from "./TotalHrsDay";
 import TotalHrsWk from "./TotalHrsWk";
 
-const Tasks = ({ uid }) => {
+const TaskList = ({ uid }) => {
   const [tasks, setTasks] = useState([]);
 
   let today = 0;
@@ -110,4 +110,4 @@ const Tasks = ({ uid }) => {
   );
 };
 
-export default Tasks;
+export default TaskList;
