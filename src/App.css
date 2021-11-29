@@ -9,6 +9,8 @@
 body {
   background-color: #cfc9d4;
   font-family: "IBM Plex Sans KR", sans-serif;
+  position: relative;
+  margin-left: 220px;
 }
 
 nav {
@@ -116,4 +118,62 @@ input {
 
 label {
   font-size: 13px;
+}
+
+.invite {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+  top: 110px;
+  right: 0px;
+  position: absolute;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.sidebar {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #6d6375;
+  color: #eeeeee;
+  letter-spacing: 1px;
+}
+
+.sidebar-item {
+  padding: 8px;
+  font-size: 16px;
+  display: block;
+  text-decoration: none;
+  color: #eeeeee;
+  font-size: 13px;
+}
+
+.username {
+  padding: 5px 10px;
+  background-color: #52495a;
+}
+
+.mail-input {
+  height: 2rem;
+  padding: 1rem;
+}
+
+.invite {
+  margin: 1rem;
+}
+
+.mail-btn {
+  width: 100%;
+  margin: 0;
 }

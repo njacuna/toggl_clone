@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { onAuthStateChanged } from "@firebase/auth";
 import { auth } from "./firebase";
 import LoginBtn from "./components/LoginBtn";
-import HomePage from "./components/HomePage";
+import Home from "./components/Home";
 
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { db } from "./firebase";
@@ -46,9 +46,7 @@ function App() {
         {signedIn === true ? (
           <Route
             path="/"
-            render={() => (
-              <HomePage email={userData.email} uid={userData.uid} />
-            )}
+            render={() => <Home email={userData.email} uid={userData.uid} />}
           />
         ) : (
           <Route path="/" component={LoginBtn} />

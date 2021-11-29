@@ -21,8 +21,9 @@ const CreateClient = () => {
         placeholder="create client"
         value={newClient}
         onChange={(e) => setNewClient(e.target.value)}
+        style={{ height: "30px" }}
       />
-      <button>+</button>
+      <button style={{ margin: 0 }}>+</button>
     </form>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { doc, updateDoc } from "@firebase/firestore";
 import { db } from "../firebase";
 
-const Timer = ({ duration, status, uid, docid }) => {
+const TimerMode = ({ duration, status, uid, docid }) => {
   const [seconds, setSeconds] = useState(duration);
   const [isActive, setIsActive] = useState(status);
   const countRef = useRef(null);
@@ -51,4 +51,4 @@ const formatTime = (timer) => {
   return `${getHours} : ${getMinutes} : ${getSeconds}`;
 };
 
-export default Timer;
+export default TimerMode;

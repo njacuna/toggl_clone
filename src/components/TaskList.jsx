@@ -2,11 +2,14 @@ import React, { useState, useEffect } from "react";
 import { collection, query, onSnapshot } from "@firebase/firestore";
 import { db } from "../firebase";
 import _ from "lodash";
-import Timer from "./Timer";
+import TimerMode from "./TimerMode";
 import DeleteBtn from "./DeleteBtn";
 import DuplicateBtn from "./DuplicateBtn";
 import TotalHrsDay from "./TotalHrsDay";
 import TotalHrsWk from "./TotalHrsWk";
+import CreateTask from "./CreateTask";
+import CreateClient from "./CreateClient";
+import CreateProject from "./CreateProject";
 
 const TaskList = ({ uid }) => {
   const [tasks, setTasks] = useState([]);
@@ -66,6 +69,9 @@ const TaskList = ({ uid }) => {
 
   return (
     <div>
+      <CreateTask uid={uid} />
+      <CreateProject />
+      <CreateClient />
       <TotalHrsDay total={today} />
       <TotalHrsWk total={thisWeek} />
       <ul className="task-list">
@@ -78,11 +84,10 @@ const TaskList = ({ uid }) => {
                   task.dateCreated === daytask.dateCreated ? (
                     <li key={daytask.id}>
                       <h5>{daytask.description}</h5>
-                      <h5>{daytask.timestamp}</h5>
                       <h5>{daytask.project}</h5>
                       <h5>{daytask.client}</h5>
                       <div>
-                        <Timer
+                        <TimerMode
                           duration={daytask.duration}
                           status={daytask.isActive}
                           docid={daytask.id}

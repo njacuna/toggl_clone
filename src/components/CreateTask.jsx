@@ -6,7 +6,7 @@ import ClientTag from "./ClientTag";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-const AddTasks = ({ uid }) => {
+const CreateTask = ({ uid }) => {
   const [newTask, setNewTask] = useState("");
   const [project, setProject] = useState("");
   const [client, setClient] = useState("");
@@ -21,6 +21,9 @@ const AddTasks = ({ uid }) => {
   const [startTime, setStartTime] = useState("00:00:00");
   const [endTime, setEndTime] = useState("00:00:00");
   const [dateState, setDateState] = useState(new Date());
+  const [focused, setFocused] = useState(false);
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
 
   const changeDate = (e) => {
     setDateState(e);
@@ -54,19 +57,6 @@ const AddTasks = ({ uid }) => {
     setIsBillable(!isBillable);
   };
 
-  console.log(
-    Date.parse(dateState.toLocaleDateString() + " " + startTime) / 1000
-  );
-  console.log(new Date(1637942400 * 1000).toLocaleDateString());
-
-  // const time = dateState.toLocaleTimeString();
-  // let newtime = "";
-  // if (time.includes("PM")) {
-  //   newtime = time + "this is afternoon";
-  // } else {
-  //   newtime = time + "morning";
-  // }
-
   useEffect(() => {
     const getDuration = (time) => {
       const hours = parseInt(time.substring(0, 2));
@@ -80,6 +70,8 @@ const AddTasks = ({ uid }) => {
       Date.parse(dateState.toLocaleDateString() + " " + startTime) / 1000
     );
   }, [endTime, startTime, dateState]);
+
+  console.log(dateState);
 
   return (
     <form onSubmit={handleCreateTask} className="create-task">
@@ -104,7 +96,9 @@ const AddTasks = ({ uid }) => {
             placeholder="00:00:00"
             onChange={(e) => setStartTime(e.target.value)}
             className="time"
+            onFocus={onFocus}
           />
+          <p>date: {dateState.toLocaleDateString()}</p>
         </label>
         <label>
           stop:{" "}
@@ -118,9 +112,14 @@ const AddTasks = ({ uid }) => {
         </label>
         <button className="new-task">Add</button>
       </div>
-      <Calendar value={dateState} onChange={changeDate} />
+      <Calendar
+        value={dateState}
+        onChange={changeDate}
+        onClickDay={onBlur}
+        className={focused ? "visible" : "hidden"}
+      />
     </form>
   );
 };
 
-export default AddTasks;
+export default CreateTask;

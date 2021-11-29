@@ -21,8 +21,9 @@ const CreateProject = () => {
         placeholder="create project"
         value={newProject}
         onChange={(e) => setNewProject(e.target.value)}
+        style={{ height: "30px" }}
       />
-      <button>+</button>
+      <button style={{ margin: 0 }}>+</button>
     </form>
   );
 };
