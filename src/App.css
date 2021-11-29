@@ -9,6 +9,8 @@
 body {
   background-color: #cfc9d4;
   font-family: "IBM Plex Sans KR", sans-serif;
+  position: relative;
+  margin-left: 220px;
 }
 
 nav {
@@ -33,6 +35,10 @@ button {
   margin: 0 3px;
 }
 
+.toggle {
+  display: none;
+}
+
 .container {
   color: rgb(86, 86, 86);
   display: flex;
@@ -45,8 +51,20 @@ ul {
   margin: 1.5rem 1rem;
 }
 
+.task-list {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+}
+
+.day-list {
+  display: flex;
+  flex-direction: column;
+  height: max-content;
+  width: 100%;
+}
+
 li {
-  height: 4rem;
   border: 0.5px solid #e3e3e3;
   display: flex;
   align-items: center;
@@ -55,30 +73,15 @@ li {
   letter-spacing: 0.5px;
   font-size: 14px;
   color: #3e3c40;
+  width: 100%;
 }
 
 .li-button {
   border-radius: 30%;
 }
 
-form {
-  background-color: #ffffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-}
-
-input {
-  outline: none;
-  border: none;
-  height: 3.5rem;
-  width: 60%;
-}
-
-.new-task {
-  height: 40px;
-  width: 70px;
+select {
+  width: 3.8rem;
 }
 
 .logout {
@@ -87,4 +90,90 @@ input {
   width: inherit;
   padding: 8px 15px;
   color: #dddddd;
+}
+
+.create-task {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.col-2 {
+  width: 35rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.time {
+  width: 3.5rem;
+  background-color: #e9e9e9;
+}
+
+input {
+  outline: none;
+  border: none;
+  font-size: 13px;
+}
+
+label {
+  font-size: 13px;
+}
+
+.invite {
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+  top: 110px;
+  right: 0px;
+  position: absolute;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.sidebar {
+  height: 100%;
+  width: 220px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #6d6375;
+  color: #eeeeee;
+  letter-spacing: 1px;
+}
+
+.sidebar-item {
+  padding: 8px;
+  font-size: 16px;
+  display: block;
+  text-decoration: none;
+  color: #eeeeee;
+  font-size: 13px;
+}
+
+.username {
+  padding: 5px 10px;
+  background-color: #52495a;
+}
+
+.mail-input {
+  height: 2rem;
+  padding: 1rem;
+}
+
+.invite {
+  margin: 1rem;
+}
+
+.mail-btn {
+  width: 100%;
+  margin: 0;
 }
